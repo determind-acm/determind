@@ -1,0 +1,16 @@
+<a href="{{ link }}" class="list-group-item list-group-item-action py-1" target="_blank">
+  <div class="container-fluid px-3">
+    <div class="row">
+      <span class="font-weight-bold mr-3">{{ site_title }}</span><span>{{ article_title }}</span>
+    </div>
+    <div class="row">
+      <span class="text-muted small">
+        {% if author != None %}
+          {{ author }}
+        {% else %}
+          <em>No listed authors.</em>
+        {% endif %}
+      </span>
+    </div>
+  </div>
+</a>
