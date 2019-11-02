@@ -2,7 +2,7 @@ from determind import Question
 
 class Seed:
     def main():
-        f=open("Questions.txt", "r")
+        f=open("questions.txt", "r")
         f1=f.readlines()
         for num, line in enumerate(f1, start=1):
             if (num % 3 == 0):
