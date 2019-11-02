@@ -1,0 +1,77 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+  <h2 class="text-center mt-4">About Us</h2>
+
+  <p>
+    &emsp;<span style="font-family: 'Comfortaa'">deter<strong>mind</strong></span>
+    is a company based out of Oxford, Ohio,
+    dedicated to individualizing the future of education and
+    learning for all grade levels. With a variety of software
+    developers and reasearchers on staff, we are able to take
+    user information that's given to us through our comprehensive
+    Learning Style Quiz in order to develop a personalized
+    learning strategy and given tips for studying. Similar companies
+    only focus on some of the eight learning styles, but DeterMind is
+    dedicated to giving users the best analysis as possible.
+  </p>
+  <p>
+    &emsp;According to the National Academy of Engineering, one of the
+    biggest challenges that will be facing society in the future is
+    developing the advancement of personalized learning. Our goal is to
+    help all types of learners reach their maximum potential in order to
+    succeed later in life and craft the abilities needed to work towards
+    continued education -- within or outside their chosen field.
+  </p>
+
+  <h3 class="mt-4">Resources</h3>
+
+  <p>
+    &emsp;Some of the sites used to research and craft our comprehensize
+    quiz are included below for further understanding of the user's
+    learning type:
+  </p>
+
+  <div class="list-group">
+    {% set site_title = 'SkillsYouNeed' %}
+    {% set article_title = 'At Your Fingertips: The 8 Types of Learning Styles' %}
+    {% set author = None %}
+    {% set link = 'https://www.skillsyouneed.com/rhubarb/fingerprints-learning-styles.html' %}
+    {% include 'includes/resource_entry.html' %}
+
+    {% set site_title = 'Visme' %}
+    {% set article_title = 'The 8 Learning Styles: Which One Works for You?' %}
+    {% set author = 'Nayomi Chibana' %}
+    {% set link = 'https://visme.co/blog/8-learning-styles/' %}
+    {% include 'includes/resource_entry.html' %}
+
+    {% set site_title = 'TecWeb' %}
+    {% set article_title = 'Multiple Intelligences' %}
+    {% set author = 'Carla Lane' %}
+    {% set link = 'http://tecweb.org/styles/gardner.html' %}
+    {% include 'includes/resource_entry.html' %}
+
+    {% set site_title = 'VirtualSpeech' %}
+    {% set article_title = 'Teaching Strategies for the 8 Different Learning Styles' %}
+    {% set author = 'Rasool Somji' %}
+    {% set link = 'https://virtualspeech.com/blog/teaching-strategies-different-learning-styles' %}
+    {% include 'includes/resource_entry.html' %}
+
+    {% set site_title = 'Kinship Parenting' %}
+    {% set article_title = '8 Different Learning Styles' %}
+    {% set author = None %}
+    {% set link = 'http://blog.kinshipparenting.com/?p=313' %}
+    {% include 'includes/resource_entry.html' %}
+
+    {% set site_title = 'Advanogy' %}
+    {% set article_title = 'Overview of Learning Styles' %}
+    {% set author = None %}
+    {% set link = 'https://learning-styles-online.com/overview/' %}
+    {% include 'includes/resource_entry.html' %}
+
+    {% set site_title = 'Teach' %}
+    {% set article_title = 'Learning Styles: All Students Are Created Equally (and Differently)' %}
+    {% set author = None %}
+    {% set link = 'https://teach.com/what/teachers-know/learning-styles/' %}
+    {% include 'includes/resource_entry.html' %}
+  </div>
+{% endblock content %}

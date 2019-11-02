@@ -2,8 +2,6 @@ from flask import render_template
 from app import app
 
 @app.route('/')
-
-@app.route('/home')
 def home():
     return render_template('home.html')
 
@@ -23,13 +21,10 @@ def register():
 def logout():
     return render_template('logout.html')
 
-@app.route('/user')
-def user():
-    return render_template('user.html')
-
-@app.route('/user/<username>')
+@app.route('/user/<username>', )
 def username(username=""):
-    return ('username.html')
+    # If student, this:
+    return render_template('student.html')
 
 @app.route('/quiz')
 def quiz():
@@ -39,6 +34,6 @@ def quiz():
 def results():
     return render_template('results.html')
 
-@app.route('learningstyles/<styles>')
+@app.route('/style/<styles>')
 def learningstyle(styles=""):
-    return render_template('learningstyle')
+    return render_template('style.html')
