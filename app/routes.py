@@ -3,10 +3,6 @@ from app import app
 
 @app.route('/')
 
-@app.route('/index')
-def index():
-    return "Hello, World!"
-
 @app.route('/home')
 def home():
     return render_template('home.html')
@@ -15,35 +11,12 @@ def home():
 def about():
     return render_template('about.html')
 
-@app.route('/login', methods=['GET','POST'])
+@app.route('/login')
 def login():
-    form = Loginform()
-    if form.validate_on_submit():
-        login_user(user)
-        flask.flash('Logged in successfully')
-        next = flask.request.args.get('next')
-        if not is_safe_url(next):
-            return flask.abort(400)
-        return flask.redirect(next or flask.url_for('index'))
-    return render_template('login.html', form=form)
+    return render_template('login.html')
 
-@app.route('/register', methods=['GET','POST'])
+@app.route('/register')
 def register():
-
-    #register_form = RegisterForm(request.form)
-    #if register.method == 'POST':
-        #if register_form.validate():
-            #username = request.form.get('username')
-            #type = request.form.get('type')
-            #name = request.form.get('name')
-            #password = request.form.get('password')
-            #registered_user = User.query.filter_by(username=username).first()
-            #if registered_user is None:
-                #user = User(username=username,
-                            #type=type,
-                            #name=name,
-                            #password=generate_password_hash(password, method='sha256'))
-                #db.session.add
     return render_template('register.html')
 
 @app.route('/logout')
@@ -56,7 +29,7 @@ def user():
 
 @app.route('/user/<username>')
 def username(username=""):
-    return
+    return ('username.html')
 
 @app.route('/quiz')
 def quiz():
@@ -68,4 +41,4 @@ def results():
 
 @app.route('learningstyles/<styles>')
 def learningstyle(styles=""):
-    return
+    return render_template('learningstyle')
