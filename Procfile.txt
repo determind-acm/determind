@@ -1,1 +1,1 @@
-determind: gunicorn determind:app
+web: gunicorn determind:app
