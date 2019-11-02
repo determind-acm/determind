@@ -1,2 +1,2 @@
-#!/bin/bash
-env FLASK_APP=HackOhio.py FLASK_DEBUG=1 flask run
+a#!/bin/bash
+env FLASK_APP=determind.py FLASK_DEBUG=1 flask run
