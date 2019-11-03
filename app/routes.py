@@ -1,4 +1,6 @@
 from flask import render_template
+from flask_login import current_user, login_user, logout_user
+from app.seed import User
 from app import app
 
 @app.route('/favicon.ico')
@@ -13,9 +15,19 @@ def home():
 def about():
     return render_template('about.html')
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('login.html')
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user is None or not user.check_password(form.password.data):
+            flash('Invalid username or password')
+            return redirect(url_for('login'))
+        login_user(users, remember=form.remember_me.data)
+        return redirect(url_for('index'))
+    return render_template('login.html', title='Sign In', form=form)
 
 @app.route('/register')
 def register():
@@ -23,7 +35,8 @@ def register():
 
 @app.route('/logout')
 def logout():
-    return render_template('logout.html')
+    logout_user()
+    return redirect(url_for('home'))
 
 @app.route('/user/<username>', )
 def username(username=""):
