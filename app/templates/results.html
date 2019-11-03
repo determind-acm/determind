@@ -2,10 +2,14 @@
 {% block content %}
   <h2 class="text-center mt-4">Results</h2>
 
-  {% for r in dictionary %}
-    {% set percentage = r[1]/7 * 100 %}
-    {% set style = r[0] %}
-    {% set style_link = {{ url_for("learningstyle, r[0]") }} %}
+  {% for key in dictionary %}
+    {% if ((dictionary[key] / 7.0) * 100) == 100 %}
+      {% set percentage = 100 %}
+    {% else %}
+      {% set percentage = '{0:.3}'.format((dictionary[key] / 7.0) * 100) %}
+    {% endif %}
+    {% set style = key %}
+    {% set style_link = url_for("learningstyle", style=key) %}
     {% include 'includes/result_entry.html' %}
   {% endfor %}
 

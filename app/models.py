@@ -28,15 +28,6 @@ class User(UserMixin, db.Model):
 def load_user(id):
     return User.query.get(int(id))
 
-linguistic = 0
-naturalist = 0
-musical = 0
-physical = 0
-visual = 0
-logical = 0
-interpersonal = 0
-intrapersonal = 0
-
 class Question(db.Model):
 
     question = db.Column(db.String(100), nullable=False)
@@ -44,213 +35,196 @@ class Question(db.Model):
     answer2 = db.Column(db.String(100), nullable=False)
     questionNumber = db.Column(db.Integer, primary_key=True)
 
+    @staticmethod
     def quizAlgorithm(arr):
-        if questionNumber == 1:
-            if arr[0] == 0:
-                linguistic += 1
 
-            if arr[0] == 1:
-                naturalist += 1;
+        linguistic = 0
+        naturalist = 0
+        musical = 0
+        physical = 0
+        visual = 0
+        logical = 0
+        interpersonal = 0
+        intrapersonal = 0
 
-        if questionNumber == 2:
-            if arr[0] == 0:
-                linguistic += 1
+        if arr[0] == 0:
+            linguistic += 1
 
-            if arr[0] == 1:
-                musical += 1;
+        if arr[0] == 1:
+            naturalist += 1;
 
-        if questionNumber == 3:
-            if arr[0] == 0:
-                linguistic += 1
+        if arr[1] == 0:
+            linguistic += 1
 
-            if arr[0] == 1:
-                physical += 1;
+        if arr[1] == 1:
+            musical += 1;
 
-        if questionNumber == 4:
-            if arr[0] == 0:
-                linguistic += 1
+        if arr[2] == 0:
+            linguistic += 1
 
-            if arr[0] == 1:
-                visual += 1
+        if arr[2] == 1:
+            physical += 1;
 
-        if questionNumber == 5:
-            if arr[0] == 0:
-                linguistic += 1
+        if arr[3] == 0:
+            linguistic += 1
 
-            if arr[0] == 1:
-                logical += 1
+        if arr[3] == 1:
+            visual += 1
 
-        if questionNumber == 6:
-            if arr[0] == 0:
-                linguistic += 1
+        if arr[4] == 0:
+            linguistic += 1
 
-            if arr[0] == 1:
-                interpersonal += 1
+        if arr[4] == 1:
+            logical += 1
 
-        if questionNumber == 7:
-            if arr[0] == 0:
-                linguistic += 1
+        if arr[5] == 0:
+            linguistic += 1
 
-            if arr[0] == 1:
-                intrapersonal += 1
+        if arr[5] == 1:
+            interpersonal += 1
 
-        if questionNumber == 8:
-            if arr[0] == 0:
-                naturalist += 1
+        if arr[6] == 0:
+            linguistic += 1
 
-            if arr[0] == 1:
-                musical += 1
+        if arr[6] == 1:
+            intrapersonal += 1
 
-        if questionNumber == 9:
-            if arr[0] == 0:
-                naturalist += 1
+        if arr[7] == 0:
+            naturalist += 1
 
-            if arr[0] == 1:
-                physical += 1
+        if arr[7] == 1:
+            musical += 1
 
-        if questionNumber == 10:
-            if arr[0] == 0:
-                naturalist += 1
+        if arr[8] == 0:
+            naturalist += 1
 
-            if arr[0] == 1:
-                visual += 1
+        if arr[8] == 1:
+            physical += 1
 
-        if questionNumber == 11:
-            if arr[0] == 0:
-                naturalist += 1
+        if arr[9] == 0:
+            naturalist += 1
 
-            if arr[0] == 1:
-                logical += 1
+        if arr[9] == 1:
+            visual += 1
 
-        if questionNumber == 12:
-            if arr[0] == 0:
-                naturalist += 1
+        if arr[10] == 0:
+            naturalist += 1
 
-            if arr[0] == 1:
-                interpersonal += 1
+        if arr[10] == 1:
+            logical += 1
 
-        if questionNumber == 13:
-            if arr[0] == 0:
-                naturalist += 1
+        if arr[11] == 0:
+            naturalist += 1
 
-            if arr[0] == 1:
-                intrapersonal += 1
+        if arr[11] == 1:
+            interpersonal += 1
 
-        if questionNumber == 14:
-            if arr[0] == 0:
-                musical += 1
+        if arr[12] == 0:
+            naturalist += 1
 
-            if arr[0] == 1:
-                physical += 1
+        if arr[12] == 1:
+            intrapersonal += 1
 
-        if questionNumber == 15:
-            if arr[0] == 0:
-                musical += 1
+        if arr[13] == 0:
+            musical += 1
 
-            if arr[0] == 1:
-                visual += 1
+        if arr[13] == 1:
+            physical += 1
 
-        if questionNumber == 16:
-            if arr[0] == 0:
-                musical += 1
+        if arr[14] == 0:
+            musical += 1
 
-            if arr[0] == 1:
-                logical += 1
+        if arr[14] == 1:
+            visual += 1
 
-        if questionNumber == 17:
-            if arr[0] == 0:
-                musical += 1
+        if arr[15] == 0:
+            musical += 1
 
-            if arr[0] == 1:
-                interpersonal += 1
+        if arr[15] == 1:
+            logical += 1
 
-        if questionNumber == 18:
-            if arr[0] == 0:
-                musical += 1
+        if arr[16] == 0:
+            musical += 1
 
-            if arr[0] == 1:
-                intrapersonal += 1
+        if arr[16] == 1:
+            interpersonal += 1
 
-        if questionNumber == 19:
-            if arr[0] == 0:
-                physical += 1
+        if arr[17] == 0:
+            musical += 1
 
-            if arr[0] == 1:
-                visual += 1
+        if arr[17] == 1:
+            intrapersonal += 1
 
-        if questionNumber == 20:
-            if arr[0] == 0:
-                physical += 1
+        if arr[18] == 0:
+            physical += 1
 
-            if arr[0] == 1:
-                logical += 1
+        if arr[18] == 1:
+            visual += 1
 
-        if questionNumber == 21:
-            if arr[0] == 0:
-                physical += 1
+        if arr[19] == 0:
+            physical += 1
 
-            if arr[0] == 1:
-                interpersonal += 1
+        if arr[19] == 1:
+            logical += 1
 
-        if questionNumber == 22:
-            if arr[0] == 0:
-                physical += 1
+        if arr[20] == 0:
+            physical += 1
 
-            if arr[0] == 1:
-                intrapersonal += 1
+        if arr[20] == 1:
+            interpersonal += 1
 
-        if questionNumber == 23:
-            if arr[0] == 0:
-                visual += 1
+        if arr[21] == 0:
+            physical += 1
 
-            if arr[0] == 1:
-                logical += 1
+        if arr[21] == 1:
+            intrapersonal += 1
 
-        if questionNumber == 24:
-            if arr[0] == 0:
-                visual += 1
+        if arr[22] == 0:
+            visual += 1
 
-            if arr[0] == 1:
-                interpersonal += 1
+        if arr[22] == 1:
+            logical += 1
 
-        if questionNumber == 25:
-            if arr[0] == 0:
-                visual += 1
+        if arr[23] == 0:
+            visual += 1
 
-            if arr[0] == 1:
-                intrapersonal += 1
+        if arr[23] == 1:
+            interpersonal += 1
 
-        if questionNumber == 26:
-            if arr[0] == 0:
-                logical += 1
+        if arr[24] == 0:
+            visual += 1
 
-            if arr[0] == 1:
-                interpersonal += 1
+        if arr[24] == 1:
+            intrapersonal += 1
 
-        if questionNumber == 27:
-            if arr[0] == 0:
-                logical += 1
+        if arr[25] == 0:
+            logical += 1
 
-            if arr[0] == 1:
-                intrapersonal += 1
+        if arr[25] == 1:
+            interpersonal += 1
 
-        if questionNumber == 28:
-            if arr[0] == 0:
-                interpersonal += 1
+        if arr[26] == 0:
+            logical += 1
 
-            if arr[0] == 1:
-                intrapersonal += 1
+        if arr[26] == 1:
+            intrapersonal += 1
+
+        if arr[27] == 0:
+            interpersonal += 1
+
+        if arr[27] == 1:
+            intrapersonal += 1
 
 
         dictionary = {
-            "Linguistic: ":linguistics,
-            "Naturalist: ":naturalist,
-            "Musical: ":musical,
-            "Physical: ":physical,
-            "Visual: ":visual,
-            "Logical: ":logical,
-            "Interpersonal: ":interpersonal,
-            "Intrapersonal: ":intrapersonal
+            "linguistic": linguistic,
+            "naturalist":naturalist,
+            "musical":musical,
+            "physical":physical,
+            "visual":visual,
+            "logical":logical,
+            "interpersonal":interpersonal,
+            "intrapersonal":intrapersonal
         }
 
         return dictionary

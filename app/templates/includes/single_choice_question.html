@@ -1,13 +1,13 @@
 <div class="card mt-4">
   <div class="card-body">
     <strong>{{ number }}.</strong> {{ question }}
-    <form class="mt-3">
+    <div class="mt-3">
       {% for i in range(answers|length) %}
       <div class="custom-control custom-radio">
-        <input type="radio" class="custom-control-input" id="q{{ number }}a{{ i }}" name="q{{ number }}" required>
+        <input type="radio" class="custom-control-input" id="q{{ number }}a{{ i }}" name="q{{ number }}" value="{{ i }}" required>
         <label class="custom-control-label" for="q{{ number }}a{{ i }}">{{ answers[i] }}</label>
       </div>
       {% endfor %}
-    </form>
+    </div>
   </div>
 </div>

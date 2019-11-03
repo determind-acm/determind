@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash, request
 from flask_login import current_user, login_user, logout_user
 from .models import User, Question, TypeInfo, db
 from app import app
@@ -59,9 +59,13 @@ def quiz():
     questions = Question.query.all()
     return render_template('quiz.html', questions=questions)
 
-@app.route('/quiz/results')
+@app.route('/quiz/results', methods=['POST'])
 def results():
-    return render_template('results.html')
+    data = []
+    for x in range(1, 29):
+        data.append(int(request.form['q' + str(x)]))
+    dictionary = Question.quizAlgorithm(data)
+    return render_template('results.html', dictionary=dictionary)
 
 @app.route('/style/<style>')
 def learningstyle(style=None):
