@@ -1,5 +1,6 @@
 {% extends 'layouts/base.html' %}
 {% block content %}
+<div class="mx-4">
   <h2 class="text-center mt-4">Learning Styles Quiz</h2>
 
   {% for q in questions %}
@@ -8,4 +9,6 @@
     {% set answers = [q.answer1, q.answer2] %}
     {% include 'includes/single_choice_question.html' %}
   {% endfor %}
+  <button type="button" class="btn btn-primary btn-lg">Submit</button>
+</div>
 {% endblock content %}

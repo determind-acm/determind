@@ -1,5 +1,6 @@
 {% extends "layouts/base.html" %}
 {% block content %}
+  <div class="mx-4">
       <h2 class="text-center mt-4">{{ style.name }}</h2>
 
       <p>
@@ -19,4 +20,5 @@
           <li>{{ trait.strip() }}</li>
         {% endfor %}
       </ul>
+    <div>
 {% endblock content %}

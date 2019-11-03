@@ -2,43 +2,11 @@
 {% block content %}
   <h2 class="text-center mt-4">Results</h2>
 
-  {% set percentage = 95 %}
-  {% set style = 'Learning Style 1' %}
-  {% set style_link = '#' %}
-  {% include 'includes/result_entry.html' %}
+  {% for r in dictionary %}
+    {% set percentage = r[1]/7 * 100 %}
+    {% set style = r[0] %}
+    {% set style_link = {{ url_for("learningstyle, r[0]") }} %}
+    {% include 'includes/result_entry.html' %}
+  {% endfor %}
 
-  {% set percentage = 80 %}
-  {% set style = 'Learning Style 2' %}
-  {% set style_link = '#' %}
-  {% include 'includes/result_entry.html' %}
-
-  {% set percentage = 65 %}
-  {% set style = 'Learning Style 3' %}
-  {% set style_link = '#' %}
-  {% include 'includes/result_entry.html' %}
-
-  {% set percentage = 50 %}
-  {% set style = 'Learning Style 4' %}
-  {% set style_link = '#' %}
-  {% include 'includes/result_entry.html' %}
-
-  {% set percentage = 45 %}
-  {% set style = 'Learning Style 5' %}
-  {% set style_link = '#' %}
-  {% include 'includes/result_entry.html' %}
-
-  {% set percentage = 30 %}
-  {% set style = 'Learning Style 6' %}
-  {% set style_link = '#' %}
-  {% include 'includes/result_entry.html' %}
-
-  {% set percentage = 20 %}
-  {% set style = 'Learning Style 7' %}
-  {% set style_link = '#' %}
-  {% include 'includes/result_entry.html' %}
-
-  {% set percentage = 10 %}
-  {% set style = 'Learning Style 8' %}
-  {% set style_link = '#' %}
-  {% include 'includes/result_entry.html' %}
 {% endblock content %}
