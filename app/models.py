@@ -242,3 +242,20 @@ class TypeInfo(db.Model):
 
     def __repr__(self):
         return '<Type %r>' % self.type
+
+class Course(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30), nullable=False)
+    professor = db.Column(db.Integer, nullable=False, foreign_key(User.id))
+
+    def __repr__(self):
+        return '<Course %r>' % self.course
+
+class Lesson(db.Model):
+
+    index = db.Column(db.Integer, primary_key=True)
+    course = db.Column(db.Integer, nullable=False, foreign_key(User.id))
+
+    def __repr__(self):
+        return '<Lesson %r>' % self.lesson
