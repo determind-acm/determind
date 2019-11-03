@@ -1,2 +1,2 @@
-a#!/bin/bash
+#!/bin/bash
 env FLASK_APP=determind.py FLASK_DEBUG=1 flask run

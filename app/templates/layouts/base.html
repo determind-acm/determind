@@ -21,7 +21,7 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
   </head>
   <body>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
       <a class="navbar-brand" href="{{ url_for('home') }}">
         <img src="{{ url_for('static', filename='images/logo.svg') }}" height="45" alt="Determind">
       </a>
@@ -37,6 +37,16 @@
         <a role="button" class="btn btn-outline-primary" href="#">Log In</a>
         <a role="button" class="btn btn-outline-primary" href="#">Sign Up</a>
         -->
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsed" aria-controls="false" aria-expanded="false" aria-label="Toggle Navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar-collapsed">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="#">Learning Quiz</a>
+          <a class="nav-item nav-link" href="#">About</a>
+        </div>
       </div>
     </nav>
 
