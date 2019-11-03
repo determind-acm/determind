@@ -247,7 +247,7 @@ class Course(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False)
-    professor = db.Column(db.Integer, nullable=False, foreign_key(User.id))
+    professor = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
 
     def __repr__(self):
         return '<Course %r>' % self.course
@@ -255,7 +255,7 @@ class Course(db.Model):
 class Lesson(db.Model):
 
     index = db.Column(db.Integer, primary_key=True)
-    course = db.Column(db.Integer, nullable=False, foreign_key(User.id))
+    course = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
 
     def __repr__(self):
         return '<Lesson %r>' % self.lesson
