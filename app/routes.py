@@ -2,6 +2,7 @@ from flask import render_template
 from flask_login import current_user, login_user, logout_user
 from app.seed import User
 from app import app
+from .models import Question
 
 @app.route('/favicon.ico')
 def favicon():
@@ -45,7 +46,8 @@ def username(username=""):
 
 @app.route('/quiz')
 def quiz():
-    return render_template('quiz.html')
+    questions = Question.query.all()
+    return render_template('quiz.html', questions=questions)
 
 @app.route('/quiz/results')
 def results():
