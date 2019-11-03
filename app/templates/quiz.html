@@ -2,23 +2,10 @@
 {% block content %}
   <h2 class="text-center mt-4">Learning Styles Quiz</h2>
 
-  {% set number = 1 %}
-  {% set question = 'This is the first question?' %}
-  {% set answers = ['Answer 1', 'Answer 2'] %}
-  {% include 'includes/single_choice_question.html' %}
-
-  {% set number = 2 %}
-  {% set question = 'This is the second question?' %}
-  {% set answers = ['Answer 3', 'Answer 4'] %}
-  {% include 'includes/single_choice_question.html' %}
-
-  {% set number = 3 %}
-  {% set question = 'This is the third question?' %}
-  {% set answers = ['Answer 5', 'Answer 6'] %}
-  {% include 'includes/multi_choice_question.html' %}
-
-  {% set number = 4 %}
-  {% set question = 'This is the fourth question?' %}
-  {% set answers = ['Answer 7', 'Answer 8'] %}
-  {% include 'includes/multi_choice_question.html' %}
+  {% for q in questions %}
+    {% set number = q.questionNumber %}
+    {% set question = q.question %}
+    {% set answers = [q.answer1, q.answer2] %}
+    {% include 'includes/single_choice_question.html' %}
+  {% endfor %}
 {% endblock content %}

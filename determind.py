@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+import app.models
 from app import app
 import array as arr
 
@@ -31,7 +31,7 @@ class Question(db.Model):
     answer1 = db.Column(db.String(100), unique=True, nullable=False)
     answer2 = db.Column(db.String(100), unique=True, nullable=False)
     questionNumber = db.Column(db.Integer, unique=True, nullable=False, primary_key=True)
-    
+
     def quizAlgorithm(arr[]){
         if questionNumber == 1:
             if arr[0] == 0:
@@ -231,6 +231,6 @@ class Question(db.Model):
                 break
     }
 }
-    
+
     def __repr__(self):
         return '<Question %r>' % self.question
