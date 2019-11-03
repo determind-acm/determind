@@ -229,6 +229,19 @@ class Question(db.Model):
             if arr[0] == 1:
                 intrapersonal++
                 break
+                
+        dictionary = {
+            "Linguistic: ":linguistics,
+            "Naturalist: ":naturalist,
+            "Musical: ":musical,
+            "Physical: ":physical,
+            "Visual: ":visual,
+            "Logical: ":logical,
+            "Interpersonal: ":interpersonal,
+            "Intrapersonal: ":intrapersonal
+        }
+        
+        return dictionary
     }
 }
 
