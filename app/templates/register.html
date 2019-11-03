@@ -5,7 +5,8 @@
       <div class="col-8-md col-12">
         <h2 class="text-center">Log In</h2>
 
-        <form>
+        <form action="" method="post">
+          {{ form.hidden_tag() }}
           <div class="form-group">
             <label for="type-input">Account Type</label>
             <select class="form-control" id="type-input">
@@ -14,25 +15,26 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="username-input">Username</label>
-            <input type="text" class="form-control" id="username-input" placeholder="Username...">
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
           </div>
           <div class="form-group">
-            <label for="email-input">Email</label>
-            <input type="email" class="form-control" id="email-input" placeholder="Email...">
+            {{ form.email.label }}<br>
+            {{ form.email(size=32) }}<br>
           </div>
           <div class="form-group">
-            <label for="name-input">Name</label>
-            <input type="text" class="form-control" id="name-input" placeholder="Name...">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name...">
           </div>
           <div class="form-group">
-            <label for="password-input">Password</label>
-            <input type="password" class="form-control" id="password-input" placeholder="Password...">
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}<br>
           </div>
           <div class="form-group">
-            <label for="password-confirmation-input">Password Confirmation</label>
-            <input type="password" class="form-control" id="password-confirmation-input" placeholder="Confirm password...">
+            {{ form.password2.label }}<br>
+            {{ form.password2(size=32) }}<br>
           </div>
+          {{ form.submit() }}
         </form>
       </div>
     </div>
