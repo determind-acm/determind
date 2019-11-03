@@ -1,5 +1,6 @@
 from flask import render_template
 from app import app
+from .models import Question
 
 @app.route('/favicon.ico')
 def favicon():
@@ -32,7 +33,8 @@ def username(username=""):
 
 @app.route('/quiz')
 def quiz():
-    return render_template('quiz.html')
+    questions = Question.query.all()
+    return render_template('quiz.html', questions=questions)
 
 @app.route('/quiz/results')
 def results():
