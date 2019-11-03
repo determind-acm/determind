@@ -1,0 +1,18 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-8-md col-12">
+        <h2 class="text-center">Log In</h2>
+
+        <form action="{{ url_for('create_course') }}" method="post">
+          <div class="form-group">
+            <label for="course-name">Course Name</label>
+            <input type="text" class="form-control" id="course-name" name="course_name" placeholder="Course name...">
+          </div>
+          <input type="submit" class="btn btn-block btn-primary">
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

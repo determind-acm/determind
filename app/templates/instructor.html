@@ -45,69 +45,50 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="col-3">
-                  <a role="button" href="#" class="btn btn-primary btn-block mb-3">
+                  <a role="button" href="{{ url_for('new_course') }}" class="btn btn-primary btn-block mb-3">
                     Create Course
                   </a>
 
                   <div class="list-group list-group" id="courses-tabs" role="tablist">
-                    <a class="list-group-item list-group-item-action active" id="courses-1-tab" data-toggle="list" href="#courses-1" role="tab" aria-controls="course-1">Course 1</a>
-                    <a class="list-group-item list-group-item-action" id="courses-2-tab" data-toggle="list" href="#courses-2" role="tab" aria-controls="course-2">Course 2</a>
-                    <a class="list-group-item list-group-item-action" id="courses-3-tab" data-toggle="list" href="#courses-3" role="tab" aria-controls="course-3">Course 3</a>
-                    <a class="list-group-item list-group-item-action" id="courses-4-tab" data-toggle="list" href="#courses-4" role="tab" aria-controls="course-4">Course 4</a>
-                    <a class="list-group-item list-group-item-action" id="courses-5-tab" data-toggle="list" href="#courses-5" role="tab" aria-controls="course-5">Course 5</a>
+                    {% for course in courses %}
+                      <a class="list-group-item list-group-item-action" id="courses-{{ course.id }}-tab" data-toggle="list" href="#courses-{{ course.id }}" role="tab" aria-controls="course-{{ course.id }}">{{ course.name }}</a>
+                    {% endfor %}
                   </div>
                 </div>
                 <div class="col">
                   <div class="tab-content" id="courses-tabs-content">
-                    <div class="tab-pane show active" id="courses-1" role="tabpanel" aria-labelledby="courses-1-tab">
+                    {% for course in courses %}
+                    <div class="tab-pane" id="courses-{{ course.id }}" role="tabpanel" aria-labelledby="courses-{{ course.id }}-tab">
                       <div class="container">
-                        <a role="button" href="#" class="btn btn-primary btn-block mb-3">
-                          Create Session
+                        <a role="button" href="{{ url_for('add_student', id=course.id) }}" class="btn btn-primary btn-block mb-3">
+                          Add Student
+                        </a>
+                        <a role="button" href="{{ url_for('new_lesson', id=course.id) }}" class="btn btn-primary btn-block mb-3">
+                          Create Lesson
                         </a>
 
-                        <div class="accordion" id="course-1-accordion">
+                        <div class="accordion" id="course-{{ course.id }}-accordion">
+                          {% for lesson in lessons[course] %}
                           <div class="card">
-                            <div class="card-header" id="course-1-session-1">
+                            <div class="card-header" id="course-{{ course.id }}-session-{{ lesson.index }}">
                               <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#course-1-session-1-collapse">
-                                  Session 1
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#course-{{ course.id }}-session-{{ lesson.index }}-collapse">
+                                  Lesson {{ lesson.index }}
                                 </button>
                               </h2>
                             </div>
 
-                            <div id="course-1-session-1-collapse" class="collapse" aria-labelledby="course-1-session-1" data-parent="#course-1-accordion">
+                            <div id="course-{{ course.id }}-session-{{ lesson.index }}-collapse" class="collapse" aria-labelledby="course-{{ course.id }}-session-{{ lesson.index }}" data-parent="#course-{{ course.id }}-accordion">
                               <div class="card-body">
                                 Session information goes here.
                               </div>
                             </div>
                           </div>
-
-                          <div class="card">
-                            <div class="card-header" id="course-1-session-2">
-                              <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#course-1-session-2-collapse">
-                                  Session 2
-                                </button>
-                              </h2>
-                            </div>
-
-                            <div id="course-1-session-2-collapse" class="collapse" aria-labelledby="course-1-session-2" data-parent="#course-1-accordion">
-                              <div class="card-body">
-                                Session information goes here.
-                              </div>
-                            </div>
-                          </div>
+                          {% endfor %}
                         </div>
                       </div>
                     </div>
-                    <div class="tab-pane" id="courses-2" role="tabpanel" aria-labelledby="courses-2-tab">
-                    </div>
-                    <div class="tab-pane" id="courses-3" role="tabpanel" aria-labelledby="courses-3-tab">
-                    </div>
-                    <div class="tab-pane" id="courses-4" role="tabpanel" aria-labelledby="courses-4-tab">
-                    </div>
-                    <div class="tab-pane" id="courses-5" role="tabpanel" aria-labelledby="courses-5-tab">
-                    </div>
+                    {% endfor %}
                   </div>
                 </div>
               </div>

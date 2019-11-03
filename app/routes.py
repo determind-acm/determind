@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, flash, request
 from flask_login import current_user, login_user, logout_user
-from .models import User, Question, TypeInfo, db
+from .models import User, Question, TypeInfo, Course, Lesson, UserCourse, db
 from app import app
 from app.forms import LoginForm, RegistrationForm
 
@@ -49,10 +49,57 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
-@app.route('/user/<username>', )
+@app.route('/user/<username>')
 def username(username=""):
     # If student, this:
-    return render_template('instructor.html')
+    #courses = Course.query.filter_by(professor=current_user.id)
+    #lessons = {}
+    #for course in courses:
+    #    lessons[course] = Lesson.query.filter_by(course=course.id)
+    usercourses = UserCourse.query.filter_by(user=current_user.id)
+    courses = []
+    for uc in usercourses:
+        courses.append(Course.query.get(uc.course))
+    lessons = {}
+    for course in courses:
+        lessons[course] = Lesson.query.filter_by(course=course.id)
+    return render_template('student.html', courses=courses, lessons=lessons)
+
+@app.route('/course/new')
+def new_course():
+    return render_template('new_course.html')
+
+@app.route('/course/create', methods=["POST"])
+def create_course():
+    name = request.form['course_name']
+    course = Course(name=name, professor=current_user.id)
+    db.session.add(course)
+    db.session.commit()
+    return redirect(url_for('username', username=current_user.username))
+
+@app.route('/course/<id>/lessons/new')
+def new_lesson(id=None):
+    course = Course.query.get(id)
+    size = Lesson.query.filter_by(course=course.id).count()
+    lesson = Lesson(course=course.id, index=size+1)
+    db.session.add(lesson)
+    db.session.commit()
+    return redirect(url_for('username', username=current_user.username))
+
+@app.route('/course/<id>/add')
+def add_student(id=None):
+    course = Course.query.get(id)
+    return render_template('add_student.html', course=course)
+
+@app.route('/course/<id>/add', methods=['POST'])
+def push_student(id=None):
+    name = request.form['student_username']
+    user = User.query.filter_by(username=name).first()
+    course = Course.query.get(id)
+    pair = UserCourse(course=course.id, user=user.id)
+    db.session.add(pair)
+    db.session.commit()
+    return redirect(url_for('username', username=current_user.username))
 
 @app.route('/quiz')
 def quiz():

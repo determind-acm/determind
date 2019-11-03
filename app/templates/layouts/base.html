@@ -22,31 +22,11 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
-      <a class="navbar-brand" href="{{ url_for('home') }}">
-        <img src="{{ url_for('static', filename='images/logo.svg') }}" height="45" alt="Determind">
-      </a>
-      <div class="btn-group" role="group" aria-label="User Pages">
-        {% if current_user.is_authenticated %}
-          <button id="user-dropdown" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Name Here</button>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="user-dropdown">
-            <a class="dropdown-item" href="#">Course List</a>
-            <a class="dropdown-item" href="#">Grades</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{{ url_for("logout") }}">Log Out</a>
-          </div>
-        {% else %}
-          <a role="button" class="btn btn-outline-primary" href="{{ url_for("login") }}">Log In</a>
-          <a role="button" class="btn btn-outline-primary" href="{{ url_for("register") }}">Sign Up</a>
-        {% endif %}
-      </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsed" aria-controls="false" aria-expanded="false" aria-label="Toggle Navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbar-collapsed">
         <ul class="navbar-nav float-right">
-          <li class="nav-item"><a class="nav-link active" href="{{ url_for("home") }}">Home <span class="sr-only">(current)</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for("quiz") }}">Learning Quiz</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for("about") }}">About</a></li>
           <li class="nav-item">
             <a class="nav-link dropdown-toggle" href="#" id="style-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Learning Styles
@@ -62,10 +42,28 @@
               <li class="dropdown-item"><a class="nav-link" href="{{ url_for("learningstyle", style="intrapersonal") }}">Intrapersonal Learner</a></li>
             </ul>
           </li>
+          <li class="nav-item"><a class="nav-link active" href="{{ url_for("home") }}">Home <span class="sr-only">(current)</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for("quiz") }}">Learning Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for("about") }}">About</a></li>
         </ul>
       </div>
+      <div class="btn-group" role="group" aria-label="User Pages">
+        {% if current_user.is_authenticated %}
+          <button id="user-dropdown" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Name Here</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="user-dropdown">
+            <a class="dropdown-item" href="{{ url_for("username", username=current_user.username) }}">Course List</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ url_for("logout") }}">Log Out</a>
+          </div>
+        {% else %}
+          <a role="button" class="btn btn-outline-primary" href="{{ url_for("login") }}">Log In</a>
+          <a role="button" class="btn btn-outline-primary" href="{{ url_for("register") }}">Sign Up</a>
+        {% endif %}
+      </div>
+      <a class="navbar-brand" href="{{ url_for('home') }}">
+        <img src="{{ url_for('static', filename='images/logo.svg') }}" height="45" alt="Determind">
+      </a>
     </nav>
-
     <div class="container-fluid my-4">
       {% block content %}{% endblock %}
     </div>

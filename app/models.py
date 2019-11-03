@@ -250,12 +250,21 @@ class Course(db.Model):
     professor = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
 
     def __repr__(self):
-        return '<Course %r>' % self.course
+        return '<Course %r>' % self.name
+
+class UserCourse(db.Model):
+
+    user = db.Column(db.Integer, db.ForeignKey(User.id), primary_key=True)
+    course = db.Column(db.Integer, db.ForeignKey(Course.id), primary_key=True)
+
+    def __repr__(self):
+        return '<UserCourse %r>' % self.user
 
 class Lesson(db.Model):
 
-    index = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    index = db.Column(db.Integer, nullable=False)
     course = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
 
     def __repr__(self):
-        return '<Lesson %r>' % self.lesson
+        return '<Lesson %r>' % self.index
