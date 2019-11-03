@@ -52,7 +52,7 @@ def logout():
 @app.route('/user/<username>', )
 def username(username=""):
     # If student, this:
-    return render_template('student.html')
+    return render_template('instructor.html')
 
 @app.route('/quiz')
 def quiz():
