@@ -27,11 +27,11 @@ class Question(db.Model):
 
 class TypeInfo(db.Model):
 
-    key = db.Column(db.String(15), primary_key=True)
+    key = db.Column(db.String(30), primary_key=True)
     name = db.Column(db.String(30), nullable=False)
     alternates = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(200), nullable=False)
     traits = db.Column(db.String(200), nullable=False)
 
     def __repr__(self):
-        return '<Type %r>' % self.type
+        return '<Type %r>' % self.key

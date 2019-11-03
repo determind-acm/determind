@@ -53,6 +53,8 @@ def quiz():
 def results():
     return render_template('results.html')
 
-@app.route('/style/<styles>')
-def learningstyle(styles=""):
-    return render_template('style.html')
+
+@app.route('/style/<style>')
+def learningstyle(style=None):
+    type = TypeInfo.query.get(style)
+    return render_template('style.html', style=type)
